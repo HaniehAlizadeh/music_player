@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>پژواک | بومِ صدا</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="glow glow-1"></div>
+<div class="glow glow-2"></div>
+<div class="glow glow-3"></div>
+
+<header class="topbar">
+  <div class="brand">
+    <span class="brand-mark">◐</span>
+    <div>
+      <div class="brand-name">پژواک</div>
+      <div class="brand-sub">بومِ صدا</div>
+    </div>
+  </div>
+
+  <nav class="main-nav">
+    <button class="nav-chip active" data-view="player">پخش‌کننده</button>
+    <button class="nav-chip" data-view="discover">کشف خواننده</button>
+  </nav>
+
+  <div class="topbar-actions">
+    <input type="text" id="search" placeholder="جستجو بین آهنگ‌ها...">
+    <button class="chip active" data-filter="all">همه</button>
+    <button class="chip" data-filter="fav">♥ نشان‌شده</button>
+  </div>
+</header>
+
+<main class="stage" id="playerView">
+  <aside class="gallery">
+    <div class="gallery-head">
+      <h2>گالری</h2>
+      <span id="count">۰ آهنگ</span>
+    </div>
+    <ul id="songList" class="song-list"></ul>
+    <div id="empty" class="empty hidden">
+      <span>♪</span>
+      <p>اینجا خالیه</p>
+    </div>
+  </aside>
+
+  <section class="canvas-stage">
+    <div class="vinyl-wrap" id="vinylWrap">
+      <canvas id="viz" width="560" height="560"></canvas>
+      <div class="vinyl" id="vinyl">
+        <div class="vinyl-label" id="vinylLabel"></div>
+        <div class="vinyl-hole"></div>
+      </div>
+      <button class="tap-hint" id="tapHint">
+        <span id="tapIcon">▶</span>
+      </button>
+    </div>
+
+    <div class="now-playing">
+      <div class="now-eyebrow" id="nowAlbum">—</div>
+      <div class="now-title" id="nowTitle">یک اثر انتخاب کن</div>
+      <div class="now-artist" id="nowArtist">تا بوم زنده شود</div>
+    </div>
+  </section>
+</main>
+
+<section class="discover hidden" id="discoverView">
+  <div class="discovery-head">
+    <h2>🎤 کشف خواننده</h2>
+    <div class="discovery-filters">
+      <input type="text" id="artistSearch" placeholder="جستجوی خواننده...">
+      <select id="styleFilter">
+        <option value="all">همه سبک‌ها</option>
+        <option value="پاپ">پاپ</option>
+        <option value="پاپ راک">پاپ راک</option>
+        <option value="پاپ سنتی">پاپ سنتی</option>
+      </select>
+    </div>
+  </div>
+  <div class="artist-grid" id="artistGrid"></div>
+</section>
+
+<div class="artist-modal hidden" id="artistModal">
+  <div class="modal-content">
+    <button class="modal-close" id="modalClose">✕</button>
+    <div class="modal-header">
+      <div class="modal-avatar" id="modalAvatar"></div>
+      <div class="modal-titles">
+        <h3 id="modalName"></h3>
+        <span id="modalStyle" class="style-tag"></span>
+      </div>
+    </div>
+    <p id="modalBio" class="modal-bio"></p>
+    <h4>آهنگ‌های این خواننده</h4>
+    <ul id="modalSongs" class="modal-song-list"></ul>
+  </div>
+</div>
+
+<footer class="player">
+  <div class="player-left">
+    <button id="shuffleBtn" class="icon-btn" title="تصادفی">⤨</button>
+    <button id="prevBtn" class="icon-btn" title="قبلی">⏮</button>
+    <button id="playBtn" class="play-btn" title="پخش">
+      <span id="playIcon">▶</span>
+    </button>
+    <button id="nextBtn" class="icon-btn" title="بعدی">⏭</button>
+    <button id="repeatBtn" class="icon-btn active" title="تکرار">↻</button>
+  </div>
+  <div class="player-mid">
+    <span class="time" id="tCur">۰:۰۰</span>
+    <input type="range" id="seek" min="0" max="1000" value="0">
+    <span class="time" id="tDur">۰:۰۰</span>
+  </div>
+  <div class="player-right">
+    <span class="vol-icon">♪</span>
+    <input type="range" id="vol" min="0" max="1" step="0.01" value="0.8">
+  </div>
+</footer>
+
+<audio id="audio" preload="metadata"></audio>
+<script src="script.js"></script>
+</body>
+</html>
